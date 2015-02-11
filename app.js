@@ -5,10 +5,20 @@ var swig = require('swig');
 var app = express();
 
 app.use(morgan('dev'));
+app.engine('html', swig.renderFile);
+
+app.set('view engine', 'html');
+app.set('views', __dirname +'/views');
+
+swig.setDefaults({ cache: false });
+
+
 
 app.get('/', function(req, res) {
 	console.log('server listening');
-	res.send('hello world');
+
+	var people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
+	res.render( 'index', {title: 'Hall of Fame', people: people} );
 });
 
 app.listen('3000');
