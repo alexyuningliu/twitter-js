@@ -45,15 +45,40 @@ code {
   padding: 7px;
 }
  
+.tweetbox p {
+  margin-bottom: 0;
+}
+
 .tweetbox img {
   float: left;
-  height: 48px;
-  width: 48px;
-  content:url("http://lorempixel.com/48/48");
+  height: 60px;
+  width: 60px;
+  content:url("http://www.fullstackacademy.com/img/team/zeke_nierenberg_nerd.jpg");
 }
+
+.tweetbox .tweet-info {
+  margin-left: 72px;
+}
+
+.tweet {
+  margin-bottom: 20px;
+}
+
 .content {
   margin-left: 60px;
 }
 .content .by {
   font-weight: bold;
+}
+
+
+
+div .col-md-3 {
+  width: 25%;
+  float: left;
+}
+
+div .col-md-9 {
+  width: 75%;
+  float: right;
 }
