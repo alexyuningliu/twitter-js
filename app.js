@@ -4,6 +4,7 @@ var swig = require('swig');
 var routes = require('./routes/');
 var bodyParser = require('body-parser');
 var app = express();
+var socketio = require('socket.io');
 
 //parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -28,5 +29,5 @@ app.set('views', __dirname +'/views');
 
 swig.setDefaults({ cache: false });
 
-
-app.listen('3000');
+var server = app.listen(3000);
+var io = socketio.listen(server)
