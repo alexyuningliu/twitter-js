@@ -1,7 +1,8 @@
 var _ = require('underscore');
 
 var add = function (name, text) {
-	data.push({name: name, text: text});
+  var index = find({name: name}).length;
+  data.push({name: name, text: text, id: index});
 };
 
 var list = function () {
