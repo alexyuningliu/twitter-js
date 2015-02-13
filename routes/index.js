@@ -5,14 +5,14 @@ var tweetBank = require('../tweetBank');
 
 router.get('/', function (req, res) {
   var tweets = tweetBank.list();
-  res.render( 'index', { title: 'Twitter.js', tweets: tweets } );
+  res.render( 'index', { title: 'Twitter.js', tweets: tweets, showForm: true } );
 });
 
 router.get('/users/:name', function(req, res) {
   var name = req.params.name;
   var list = tweetBank.find( {name: name} );
   console.log(list);
-  res.render( 'index', { title: 'Twitter.js - Posts by '+ name, tweets: list } );
+  res.render( 'index', { title: 'Twitter.js - Posts by '+ name, tweets: list, showForm: true } );
 });
 
 router.get('/users/:name/tweets/:id', function(req, res) {
@@ -21,7 +21,14 @@ router.get('/users/:name/tweets/:id', function(req, res) {
   var list = tweetBank.find( {name: name, id: id} );
   console.log(list);
   // console.log(tweetBank.list());
-  res.render( 'index', { title: 'Twitter.js - Tweet number ' + id + ' by '+ name, tweets: list } );
+  res.render( 'index', { title: 'Twitter.js - Tweet number ' + id + ' by '+ name, tweets: list, showForm: false } );
+});
+
+router.post('/submit', function(req, res) {
+  var name = req.body.name;
+  var text = req.body.text;
+  tweetBank.add(name, text);
+  res.redirect('/');
 });
 
 module.exports = router;
