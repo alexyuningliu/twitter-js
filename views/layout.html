@@ -86,10 +86,12 @@
       var socket = io.connect();
 
       // When 'new_tweet' events are fired, do something with the packaged tweet
-      socket.on('new_tweet', function (tweet) { 
-        console.log(tweet);
-        alert('Refreshing... check the console...');
+      socket.on('new_tweet', function (tweet) {    
+        var str = '<div class="tweet"> <img> <div class="tweet-info"> <p><b>'+tweet.name+'</b></p> <p>'+tweet.text+'</p> <p><a href=\"/users/'+tweet.name+'\">Retweet '+tweet.name+'</a></p> <p><a href=\"/users/'+tweet.name+'/tweets/'+tweet.id+'\">View tweet</a></p> </div> <div style="clear: both;"></div> </div>';
+
         // some logic to add the new tweet to the DOM…
+
+        $('.tweetbox').append(str);
       }); 
     </script>
   </body>
